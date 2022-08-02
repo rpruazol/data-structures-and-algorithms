@@ -308,7 +308,7 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
   // Solution code here...
-  return arr.filter(obj => obj.name.search('a') === -1 ? false : true).reduce((acc, curr) => {
+  arr.filter(obj => obj.name.search('a') === -1 ? false : true).reduce((acc, curr) => {
     if(curr.children){
       curr.children.forEach(child => acc.push(child))
     }
