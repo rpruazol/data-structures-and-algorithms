@@ -250,9 +250,7 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
-  const vowels = str.split('').forEach(letter => letter === )
-};
-
+}
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
