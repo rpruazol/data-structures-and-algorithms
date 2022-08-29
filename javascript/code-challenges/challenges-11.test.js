@@ -56,6 +56,7 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  return input.reduce((prev, row) => prev + row.reduce((prev, value) => prev + value, 0 ), 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,6 +73,7 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  return input.map(row =>  row.filter(value => typeof value === "number" && value % 5 === 0).map(value => Math.pow(2, value)));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,6 +159,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  let initial = data[0];
+  return data.reduce((prev, current) => parseInt(current.height) < parseInt(prev.height) ? current : prev , initial  ).name;
 };
 
 /* ------------------------------------------------------------------------------------------------
