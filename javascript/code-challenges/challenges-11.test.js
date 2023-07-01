@@ -18,9 +18,14 @@ Becomes:
 ]
 ------------------------------------------------------------------------------------------------ */
 
-function transformToLis(obj){
+function transformToLis(obj) {
   // Solution code here...
-}
+  const out = [];
+  for (const key in obj) {
+    out.push(`<li>${key}: ${obj[key]}</li>`)
+  }
+  return out;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -34,6 +39,9 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  let out = 0;
+  input.forEach(row => row.forEach(value => { if (target === value) out++; }))
+  return out
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,6 +56,7 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  return input.reduce((prev, row) => prev + row.reduce((prev, value) => prev + value, 0 ), 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,6 +73,7 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  return input.map(row =>  row.filter(value => typeof value === "number" && value % 5 === 0).map(value => Math.pow(2, value)));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,6 +140,15 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  //   Write a function named findMaleAndFemale that, given the Star Wars data, below,
+  // returns the names of the characters whose gender is either male or female.
+
+  // The names should be combined into a single string with each character name separated by "and".
+
+  // For example, "C-3PO and Luke Skywalker".
+
+
+  return data.filter(obj => obj.gender === 'male' || obj.gender === 'female' ? obj.name : '' ).map(obj => obj.name).join(' and ')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -140,6 +159,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  let initial = data[0];
+  return data.reduce((prev, current) => parseInt(current.height) < parseInt(prev.height) ? current : prev , initial  ).name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -155,8 +176,8 @@ Run your tests from the console: jest challenges-10.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return a list of key value pairs inside of li tags', () => {
-    expect(transformToLis({name: 'bob', age: 32})[0]).toStrictEqual(`<li>name: bob</li>`);
-    expect(transformToLis({name: 'bob', age: 32})[1]).toStrictEqual(`<li>age: 32</li>`);
+    expect(transformToLis({ name: 'bob', age: 32 })[0]).toStrictEqual(`<li>name: bob</li>`);
+    expect(transformToLis({ name: 'bob', age: 32 })[1]).toStrictEqual(`<li>age: 32</li>`);
     expect(transformToLis({})).toStrictEqual([]);
   });
 });
