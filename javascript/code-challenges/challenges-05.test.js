@@ -13,7 +13,6 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
   // Solution code here...
-  return people.map( value => `${value.firstName} ${value.lastName}`)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,7 +24,6 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 const addValues = (arr) => {
   // Solution code here...
-  return arr.reduce((acc, curr) => acc + curr ,0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,7 +40,6 @@ Write a function named addPurchases that, given an array of objects as input, us
 
 const addPurchases = (arr) => {
   // Solution code here...
-  return arr.reduce((acc, curr) => acc + curr.purchasePrice,0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +52,6 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
-  return arr.reduce((acc, curr) => acc + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,10 +112,6 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
-  return arr.reduce((acc, curr) => {
-    acc.push(curr.name)
-    return acc
-  },[])
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -132,10 +124,6 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
-  return str.split('').reduce((acc, curr) => {
-    acc.unshift(curr)
-    return acc
-  },[]).join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -189,9 +177,6 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
-  return arr.reduce((acc, curr) => {
-    return (curr.children) ? acc + curr.children.length : acc + 0;
-  },0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -204,12 +189,6 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
-  const output = arr.reduce((arr,curr) => {
-    arr.count++;
-    arr.sum = arr.sum + curr;
-    return arr
-  }, { count: 0, sum: 0})
-  return output.sum / output.count
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -231,17 +210,13 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
-  return arr.reduce((acc,curr) => {
-    return isPrime(curr) ? acc = acc + 1 : acc = acc + 0
-  },0)
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
 
-Write a function named extractState that, given the snorlaxData, below, uses reduce to return the object whose 'name' property matches the given string.
+Write a function named extractStats that, given the snorlaxData below, uses reduce to build an object that holds the 'name' and 'baseStat' of each stat, where the key is the 'name', and the value is 'baseStat'. Return the object.
 
-If the input array does not have a stat with that specific name, the function should return null.
 ------------------------------------------------------------------------------------------------ */
 
 const snorlaxData = {
@@ -275,10 +250,8 @@ const snorlaxData = {
   weight: 4600,
 };
 
-const extractStat = (statName, arr) => {
+const extractStats = (snorlaxData) => {
   // Solution code here...
-  return arr.reduce((acc, curr) => curr.stat.name === statName ? arr : acc)
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -291,29 +264,8 @@ Write a function named extractChildren that, given the array of characters from 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
-// {
-//   name: 'Eddard',
-//   spouse: 'Catelyn',
-//   children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-//   house: 'Stark',
-// },
-
-// {
-//   name: 'Jon',
-//   spouse: 'Lysa',
-//   children: ['Robin'],
-//   house: 'Arryn',
-// },
-
-
 const extractChildren = (arr) => {
   // Solution code here...
-  arr.filter(obj => obj.name.search('a') === -1 ? false : true).reduce((acc, curr) => {
-    if(curr.children){
-      curr.children.forEach(child => acc.push(child))
-    }
-    return acc
-  },[])
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -370,27 +322,27 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+xdescribe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-describe('Testing challenge 8', () => {
+xdescribe('Testing challenge 8', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
 });
 
-describe('Testing challenge 9', () => {
+xdescribe('Testing challenge 9', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
 });
 
-describe('Testing challenge 10', () => {
-  test('It should return any stats that match the input', () => {
-    expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
+xdescribe('Testing challenge 10', () => {
+  test('It should return an object that contains the names of each stat as individual keys and the respective baseStats as values to those keys.', () => {
+    expect(extractStats(snorlaxData)).toStrictEqual({'speed': 30, 'special-defense': 110, 'special-attack': 65});
   });
 });
 
