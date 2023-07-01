@@ -10,7 +10,8 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
-};
+  return arr.reduce((maxNum, value) => value > maxNum ? maxNum = value : maxNum)
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -19,13 +20,15 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(courseInfo)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,6 +41,7 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  return Object.values(obj).find(num => value === num) ? true : false
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,10 +61,13 @@ HR has asked you to change the data to make it easier to print so that it looks 
   'Alan Turing: 222-853-5933'
 ]
 
+CREDIT:  https://thewebdev.info/2021/09/12/how-to-convert-a-javascript-object-into-a-key-value-object-array/#:~:text=Value%20Object%20Array-,To%20convert%20a%20JavaScript%20object%20into%20a%20key%2Dvalue%20object,value%20pair%20arrays%20into%20objects
+
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  return Object.entries(obj).map((value) => `${value[0]}: ${value[1]}`)
 };
 
 
@@ -115,9 +122,8 @@ const characters = [
 ];
 
 const getHouses = (arr) => {
-  let houses = [];
   // Solution code here...
-  return houses;
+  return arr.map(value => value.house);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -134,7 +140,13 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-
+  let output = false
+  arr.forEach(family => {
+    if (family.name.toLowerCase() === character.toLowerCase()) {
+      return (Object.keys(family).find(element => element === 'children') ? output = true : output = false)
+    }
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
