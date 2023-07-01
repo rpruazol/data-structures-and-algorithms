@@ -21,12 +21,11 @@ let starWarsPeople = [
     name: 'R2-D2',
     height: '96',
     eye_color: 'red'
-  },
+  }
 ];
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  return starWarsArr.sort((a,b) => b.height - a.height)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,8 +36,6 @@ Write a function named removeThree that takes an index and an array. The functio
 
 const removeThree = (idx, arr) => {
   // Solution code here...
-  arr.splice(idx, 3)
-  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,7 +46,6 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
-  return arr.join(' ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,10 +64,6 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  str.split('').forEach((letter, idx) => {
-    result.push(str.slice(idx))
-  })
-  result.push('');
   return result;
 };
 
@@ -85,8 +77,6 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
-  const out = arr.split('')
-  return out
 };
 
 
@@ -127,21 +117,13 @@ const gruffaloCrumble = {
     'Fold together remaining ingredients to make the crisp',
     'Spread the crisp evenly over the gruffalo mixture',
     'Bake for 12-15 hours',
-  ],
+  ]
 };
 
 
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
-// Write a function named listFoods that takes in the recipe and returns a new array of the food items without any amount or units. Just the name. For example, '1 cup flour' will return 'flour'.
-// Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful.
-// Do not use split for this function.
-  recipe.ingredients.forEach(value => {
-    const a = value.indexOf(' ') + 1
-    const out = value.slice(a) // returns string
-    result.push(out.slice(out.indexOf(' ') + 1))
-  })
   return result;
 };
 
@@ -235,7 +217,6 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
-  return str.replace(/[aeiou]/gi, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -250,7 +231,8 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
-}
+};
+
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
@@ -266,7 +248,7 @@ describe('Testing challenge 1', () => {
   test('It should sort the star wars characters by height from tallest to shortest', () => {
     expect(sortStarWarsCharacters(starWarsPeople)[0]['name']).toStrictEqual('Luke Skywalker');
     expect(sortStarWarsCharacters(starWarsPeople)[2]['height']).toStrictEqual('96');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {
@@ -355,7 +337,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-describe('Testing challenge 12', () => {
+xdescribe('Testing challenge 12', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);

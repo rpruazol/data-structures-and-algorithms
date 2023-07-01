@@ -8,7 +8,6 @@ Write a function named replaceZeros that, given a string, uses Regex to replace 
 
 const replaceZeros = (string) => {
   // Solution code here...
-  return string.replaceAll(0,'zero');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,8 +20,6 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 
 const validatePin = (pin) => {
   // Solution code here...
-  const re = /^\d{4}$/g;
-  return re.test(pin);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,8 +32,6 @@ If the word is between 5 and 10 characters long, return true. Otherwise, return 
 
 const validateWord = (word) => {
   // Solution code here...
-  const re = /^[a-zA-Z]{5,10}$/g;
-  return re.test(word);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,8 +44,6 @@ If it does, return true. If not, return false.
 
 const hasNumber = (string) => {
   // Solution code here...
-  const re = /[a-zA-Z]\d/;
-  return re.test(string);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -165,7 +158,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should match a basic email', () => {
     expect(validateEmail('joe@codefellows.com')).toBeTruthy();
   });
@@ -196,7 +189,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should match the acceptable phone number formats', () => {
     expect(validatePhoneNumber('(555) 555-5555')).toBeTruthy();
     expect(validatePhoneNumber('555 555-5555')).toBeTruthy();
