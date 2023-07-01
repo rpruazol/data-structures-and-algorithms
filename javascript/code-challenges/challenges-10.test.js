@@ -9,6 +9,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 
 function returnTen(str){
   // Solution code here...
+  return str.split('').splice(-10)
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,6 +28,18 @@ return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
   // Solution code here...
+  let max;
+
+  matrix.forEach(row => {
+    row.forEach(value => {
+      if (!max)  {
+        max = value
+      } else if (max < value) {
+        max = value
+      };
+    })
+  })
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,6 +58,11 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  let sum = 0;
+  matrix.forEach(row => {
+    sum = sum + row.reduce((prev, value) => prev + value)
+  })
+  return sum
 };
 
 
@@ -72,7 +90,15 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
-
+  let output = [];
+  for (let i = 0; i < hoursOpen.length; i++) {
+    let hourTotal = 0;
+    for (let j = 0; j < stores.length; j++) {
+      hourTotal = hourTotal + stores[j][i];
+    }
+    output.push(hourTotal)
+  }
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,6 +113,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  const out = [];
+   hours.forEach((hour, idx) => {
+    out.push({'sales': `${data[idx]} cookies`, 'time': hour})
+   })
+   return out;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,6 +143,11 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  let output = 0
+  arr.forEach(obj => {
+    output = obj.items.reduce((prev, curr) => curr.name === 'Treats' ? prev + curr.quantity : prev, 0)
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -201,7 +237,7 @@ The function should parse the string as rows and columns and compute the sum of 
 For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
-const excel = (str) => {
+const excel = (str) => {555
   // Solution code here...
 };
 
