@@ -125,7 +125,7 @@ const sortBy = (property, arr) => {
   // Solution code here...
   return arr.sort((a, b) => {
     if (typeof a.property === 'number') {
-      console.log(a.property, b.property);
+      // console.log(a.property, b.property);
       return a[property] - b[property];
     } else if (a[property] > b[property]) {
       return 1;
@@ -205,7 +205,7 @@ const detectTicTacToeWin = (board) => {
     let three = board[xThree][yThree];
 
     if (one && one === two && two === three) {
-      console.log(true, one,two,three);
+      // console.log(true, one,two,three);
       return true;
     } else {
       return false;
