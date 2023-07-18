@@ -24,6 +24,24 @@ class LinkedList {
       this.head = newNode;
     }
   }
+  includes(value){
+    let current = this.head
+    while(current){
+      if(current.value === value){return true}
+      current = current.next
+    }
+    return false
+  }
+  toString(){
+    let current = this.head;
+    let str = ''
+    while(current){
+      str += `{${current.value}}->`
+      current = current.next;
+    }
+    str += 'NULL'
+    return str;
+  }
 }
 
 
