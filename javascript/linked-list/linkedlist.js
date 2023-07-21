@@ -6,13 +6,6 @@ class LinkedList {
   constructor(head = null) {
     this.head = head;
   }
-  traverse() {
-    let current = this.head;
-    while (current) {
-      current = current.next;
-    }
-    // should we return something?
-  }
   insert(value) {
     // add new node with the value to the head of the list with an O(1) time performance
     let newNode = new Node(value);
@@ -41,6 +34,57 @@ class LinkedList {
     }
     str += 'NULL';
     return str;
+  }
+  append(value) {
+    let current = this.head;
+    while(current.next){
+      current = current.next;
+    }
+    current.next = new Node(value);
+  }
+  insertBefore(value,targetValue) {
+    let current = this.head;
+    if(current.value === targetValue){
+      let newNode = new Node(value);
+      newNode.next = current;
+      this.head = newNode;
+      return;
+    }
+    while(current){
+      if(current.next.value === targetValue){
+        // make new node,
+        let newNode = new Node(value);
+        // have the current node point to the new node
+        newNode.next = current.next;
+        current.next = newNode;
+        return;
+      } else {
+        current = current.next;
+      }
+    }
+  }
+  insertAfter(value, targetValue){
+    let current = this.head;
+    if(current.value === targetValue){
+      // {so}->{this}->{is}->{definitely}->{a linked list}->{last node}->NULL'
+      let newNode = new Node(value);
+      // {I'm sure}->
+      newNode.next = current.next;
+      current.next = newNode;
+      return;
+    } else {
+      while(current){
+        if(current.value === targetValue){
+          let newNode = new Node(value);
+          // {NOT}
+          newNode.next = current.next;
+          current.next = newNode;
+          return;
+        } else {
+          current = current.next;
+        }
+      }
+    }
   }
 }
 
