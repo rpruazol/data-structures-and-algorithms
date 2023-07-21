@@ -61,6 +61,3 @@ describe('linked list', () => {
     expect(testLL.toString()).toEqual('{so}->{I\'m sure}->{this}->{is}->{definitely}->{NOT}->{a linked list}->{last node}->NULL');
   });
 });
-
-
-
