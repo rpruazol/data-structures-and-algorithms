@@ -1,7 +1,7 @@
 'use strict';
 
 const { LinkedList, Node } = require('../linkedlist');
-const {dummyll} = require('./dummyll');
+const {dummyll} = require('../dummyll');
 
 // Can successfully instantiate an empty linked list
 // Can properly insert into the linked list
@@ -20,6 +20,10 @@ describe('linked list', () => {
     const emptyLL = new LinkedList();
     expect(emptyLL.head).toEqual(null);
   });
+  test('Traverse a linked list', () => {
+    const testLL = new LinkedList(dummyll.head);
+    
+  })
   test('Can properly insert into the linked list', () => {
     const testLL = new LinkedList(dummyll.head);
     expect(testLL.head.value).toEqual('this');
@@ -62,8 +66,8 @@ describe('linked list', () => {
   });
   test('Can insert a new node with a given value immediately AFTER the first node that has the value specified', () => {
     const testLL = new LinkedList(dummyll.head);
-    testLL.insertAfter('I\'m sure', 'so');
+    testLL.insertAfter('I\'m sure', 'this');
     testLL.insertAfter('NOT', 'definitely');
-    expect(testLL.toString()).toEqual('{so}->{I\'m sure}->{this}->{is}->{definitely}->{NOT}->{a linked list}->{last node}->NULL');
+    expect(testLL.toString()).toEqual('{this}->{I\'m sure}->{is}->{definitely}->{NOT}->{a linked list}->{last node}->NULL');
   });
 });
