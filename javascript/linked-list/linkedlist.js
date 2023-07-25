@@ -88,20 +88,32 @@ class LinkedList {
   }
   kthFromEnd(k){
     // return the nodes value that is k places from the tail of the linked list
-    let length = 1;
-    let current = this.head
-    while(current.next){
-      current = current.next
-      length++
+    // let length = 1;
+    // let current = this.head
+    // while(current.next){
+    //   current = current.next
+    //   length++
+    // }
+
+    // let kValueNode = length - k;
+    // current = this.head;
+    
+    // for(let i = 1; i < kValueNode; i++){
+    //   current = current.next
+    // }
+    // return current.value
+    let slow = this.head;
+    let fast = this.head;
+
+    for(let i = 0; i <= k; i++){
+      fast = fast.next;
     }
 
-    let kValueNode = length - k;
-    current = this.head;
-    
-    for(let i = 1; i < kValueNode; i++){
-      current = current.next
+    while(fast){
+      slow = slow.next;
+      fast = fast.next;
     }
-    return current.value
+    return slow.value
   }
 }
 
