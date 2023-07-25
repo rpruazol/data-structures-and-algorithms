@@ -11,8 +11,7 @@ const {dummyll} = require('../dummyll');
 // Will return false when searching for a value in the linked list that does not exist
 // Can properly return a collection of all the values that exist in the linked list
 
-
-
+let testLL;
 
 
 describe('linked list', () => {
@@ -21,7 +20,7 @@ describe('linked list', () => {
     expect(emptyLL.head).toEqual(null);
   });
   test('Traverse a linked list', () => {
-    const testLL = new LinkedList(dummyll.head);
+    // const testLL = new LinkedList(dummyll.head);
     
   })
   test('Can properly insert into the linked list', () => {
@@ -53,7 +52,6 @@ describe('linked list', () => {
   });
   test('Can append a new node with a given value to the end of the list', () => {
     const testLL = new LinkedList(dummyll.head);
-    console.log(testLL);
     testLL.append('last node');
     expect(testLL.toString()).toEqual('{this}->{is}->{a linked list}->{last node}->NULL');
   });
@@ -70,4 +68,11 @@ describe('linked list', () => {
     testLL.insertAfter('NOT', 'definitely');
     expect(testLL.toString()).toEqual('{this}->{I\'m sure}->{is}->{definitely}->{NOT}->{a linked list}->{last node}->NULL');
   });
+  test('Return the node\'s value that is k places from the tail of the linked list', () => {
+    const testLL = new LinkedList(dummyll.head);
+    console.log('testLL on kth value', testLL);
+    expect(testLL.kthFromEnd(3)).toEqual('definitely');
+    expect(testLL.kthFromEnd(4)).toEqual('is');
+    expect(testLL.kthFromEnd(5)).toEqual('I\'m sure');
+  })
 });
