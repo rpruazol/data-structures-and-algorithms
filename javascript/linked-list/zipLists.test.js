@@ -50,4 +50,10 @@ describe('zip linked list', () => {
     // expect(result.next.next.next.value).toEqual('c');
     expect(result.next.next.next.value).toEqual(3);
   });
+  test('invalid input', () => {
+    const linkedListTest = new LinkedList(new Node(1));
+    const result = zipLists(linkedListTest, 'bananas');
+    expect(result).toEqual(null);
+
+  });
 });

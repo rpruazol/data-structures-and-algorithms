@@ -24,6 +24,9 @@
 // };
 
 module.exports = function zipLists(headA, headB) {
+  if(!headA.value || !headB.value){
+    return null;
+  }
   let currentA = headA;
   let currentB = headB;
   let tmpA = headA;
