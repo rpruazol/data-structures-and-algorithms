@@ -2,6 +2,8 @@
 
 
 
+
+
 class LinkedList {
   constructor(head = null) {
     this.head = head;
@@ -85,6 +87,35 @@ class LinkedList {
         }
       }
     }
+  }
+  kthFromEnd(k){
+    // return the nodes value that is k places from the tail of the linked list
+    let length = 0;
+    let current = this.head
+    while(current){
+      current = current.next
+      length++
+    }
+
+    let kValueNode = length - k;
+    current = this.head;
+    
+    for(let i = 1; i < kValueNode; i++){
+      current = current.next
+    }
+    return current.value
+    // let slow = this.head;
+    // let fast = this.head;
+
+    // for(let i = 0; i <= k; i++){
+    //   fast = fast.next;
+    // }
+
+    // while(fast){
+    //   slow = slow.next;
+    //   fast = fast.next;
+    // }
+    // return slow.value
   }
 }
 
