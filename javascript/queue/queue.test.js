@@ -23,5 +23,10 @@ describe('queue', () => {
     const queue = new Queue(new Node('world'));
     queue.dequeue()
     expect(queue.isEmpty).toBeTruthy();
+  });
+  test('single node is the front and back', () => {
+    const queue = new Queue(new Node('world'));
+    expect(queue.front.value).toEqual('world');
+    expect(queue.back.value).toEqual('world');
   })
 })
