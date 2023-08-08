@@ -24,6 +24,7 @@ describe('stack', () => {
   test('stack is empty', () => {
     const stack = new Stack(new Node('world'));
     stack.pop()
+    console.log(stack)
     expect(stack.isEmpty).toBeTruthy();
   })
 })

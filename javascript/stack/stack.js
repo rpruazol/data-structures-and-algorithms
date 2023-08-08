@@ -2,15 +2,17 @@
 
 
 class Stack {
-  constructor(top){
-    this.top = top;
+  constructor(top=null){
+    this.top = new Node(top);
   }
   push(value){
     let temp = new Node(value);
     temp.next = this.top;
     this.top = temp;
+    return temp
   }
   pop(){
+    // console.log(this)
     const temp = this.top;
     this.top = this.top.next;
     temp.next = null;
