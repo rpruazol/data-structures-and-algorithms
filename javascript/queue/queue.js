@@ -12,7 +12,13 @@ class Queue {
   }
   enqueue(value){
     // returns the node that is enqueued
-    let temp = new Node(value);
+    const temp = new Node(value);
+    if(this.front === null && this.back === null){
+      // queue is empty
+      this.back = temp;
+      this.front = temp;
+      return temp
+    }
     temp.next = this.back;
     this.back = temp;
     return temp;
