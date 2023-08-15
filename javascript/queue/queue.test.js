@@ -4,10 +4,18 @@ const { Queue, Node } = require("./queue");
 
 
 describe('queue', () => {
+  test('initialize an empty queue', () => {
+    const queue = new Queue();
+    expect(queue.back).toEqual(null);
+    expect(queue.front).toEqual(null);
+  })
   test('add new value to back of queue', () => {
-    const queue = new Queue(new Node('world'));
+    const queue = new Queue();
     queue.enqueue('hello');
-    expect(queue.back.value).toEqual('hello');
+    queue.enqueue('world');
+    queue.enqueue('and others');
+    expect(queue.back.value).toEqual('and others');
+    expect(queue.front.value).toEqual('hello');
   });
   test('return and remove the node from front of queue', () => {
     const queue = new Queue(new Node('world'));
