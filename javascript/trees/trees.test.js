@@ -1,6 +1,6 @@
 'use strict';
 
-const {Tree, Node} = require('./trees');
+const { Tree, Node } = require('./trees');
 
 
 
@@ -16,7 +16,7 @@ describe('Trees', () => {
     newTree.insert(10);
     expect(newTree.root.value).toEqual(10);
   });
-  test('insert 3 nodes in tree', () => {
+  test('insert nodes in tree', () => {
     const newTree = new Tree();
     newTree.insert(10);
     newTree.insert(15);
@@ -33,5 +33,21 @@ describe('Trees', () => {
     expect(newTree.root.left.left.value).toEqual(4);
     expect(newTree.root.right.right.value).toEqual(25);
     expect(newTree.root.left.left.right.value).toEqual(6);
+  });
+  test('preorder', () => {
+    const newTree = new Tree();
+    newTree.insert(10);
+    newTree.insert(15);
+    newTree.insert(7);
+    newTree.insert(4);
+    newTree.insert(25);
+    newTree.insert(20);
+    newTree.insert(1000);
+    newTree.insert(1);
+    newTree.insert(6);
+
+    const result = newTree.preOrder();
+    console.log(result);
+    expect(result).toEqual([10, 7, 4, 1, 6, 15, 25, 20, 1000]);
   });
 });

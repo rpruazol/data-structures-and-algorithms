@@ -33,6 +33,25 @@ class Tree {
       _insert(this.root);
     }
   }
+  preOrder() {
+    // preorder prints the value first
+    const arr = [];
+    const _traverse = (node) => {
+
+      arr.push(node.value);
+
+      if (node.left) {
+        _traverse(node.left);
+      }
+      if (node.right) {
+        _traverse(node.right);
+      }
+    };
+    _traverse(this.root);
+
+    return arr;
+  }
+
 }
 
-module.exports = { Tree, Node }
+module.exports = { Tree, Node };
