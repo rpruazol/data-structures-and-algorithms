@@ -66,6 +66,21 @@ class Tree {
     _traverse(this.root);
     return arr;
   }
+  postOrder(){
+    const arr = [];
+    const _traverse = (node) => {
+
+      if(node.left){
+        _traverse(node.left);
+      }
+      if(node.right){
+        _traverse(node.right);
+      }
+      arr.push(node.value);
+    };
+    _traverse(this.root);
+    return arr;
+  }
 
 }
 

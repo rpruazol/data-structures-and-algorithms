@@ -65,4 +65,20 @@ describe('Trees', () => {
     console.log(result);
     expect(result).toEqual([1, 4, 6, 7, 10, 15, 20, 25, 1000]);
   });
+  test('postOrder', () => {
+    const newTree = new Tree();
+    newTree.insert(10);
+    newTree.insert(15);
+    newTree.insert(7);
+    newTree.insert(4);
+    newTree.insert(25);
+    newTree.insert(20);
+    newTree.insert(1000);
+    newTree.insert(1);
+    newTree.insert(6);
+
+    const result = newTree.postOrder();
+    console.log(result);
+    expect(result).toEqual([1, 6, 4, 7, 20, 1000, 25, 15, 10]);
+  });
 });
