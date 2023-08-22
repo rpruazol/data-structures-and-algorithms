@@ -51,6 +51,21 @@ class Tree {
 
     return arr;
   }
+  inOrder(){
+    const arr = [];
+    const _traverse = (node) => {
+
+      if(node.left){
+        _traverse(node.left);
+      }
+      arr.push(node.value);
+      if(node.right){
+        _traverse(node.right);
+      }
+    };
+    _traverse(this.root);
+    return arr;
+  }
 
 }
 
