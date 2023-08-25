@@ -81,6 +81,19 @@ class Tree {
     _traverse(this.root);
     return arr;
   }
+  maxValue(){
+    let currentMax = this.root.value;
+    
+    let _helper = (node) => {
+      if(node.value > currentMax){currentMax = node.value}
+
+      if(node.left){_helper(node.left)}
+      if(node.right){_helper(node.right)}
+    }
+    _helper(this.root);
+
+    return currentMax;
+  }
 
 }
 
