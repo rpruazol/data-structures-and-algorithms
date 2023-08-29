@@ -18,7 +18,7 @@ class Tree {
     if (this.root === null) { this.root = newNode; return newNode; }
     else {
       const _insert = (node) => {
-        console.log(node)
+        // console.log(node)
         // node here is our ref node or our root
         if (newNode.value < node.value) {
           if (!node.left) { node.left = newNode; return; }
