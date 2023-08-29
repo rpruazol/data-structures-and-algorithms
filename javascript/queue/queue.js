@@ -13,27 +13,33 @@ class Queue {
   enqueue(value){
     // returns the node that is enqueued
     const temp = new Node(value);
-    if(this.front === null && this.back === null){
+    if(this.back === null){
       // queue is empty
+      this.front = this.back = temp;
+    } else{
+      this.back.next = temp;
       this.back = temp;
-      this.front = temp;
-      return temp
+
     }
-    temp.next = this.back;
-    this.back = temp;
     return temp;
   }
   dequeue(){
+    if (this.isEmpty()) {
+      return null;
+  }
     const temp = this.front;
     this.front = this.front.next;
-    temp.next = null;
+    if(this.front === null){
+      this.back = null;
+    }
+
     return temp;
   }
   peek(){
     return this.front;
   }
   isEmpty(){
-    return this.rear === null;
+    return this.front === null;
   }
 }
 
