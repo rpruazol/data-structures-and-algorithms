@@ -15,23 +15,26 @@ function kAryFizzbuzz(node){
   
   
   let _fizzBuzz = (num) => {
-    console.log('num', num)
+
     let response = '';
     
-    if(num % 3 === 0 ){ response += 'fizz'}
-    if(num % 5 === 0){ response += 'buzz'}
+    if(num % 3 === 0 ){ response += 'Fizz'}
+    if(num % 5 === 0){ response += 'Buzz'}
+    if(response === ''){ response = num.toString() }
+    console.log('response', response, 'value', num)
     return response
   }
   
   const newNode = new Node(_fizzBuzz(node.value));
-
+  
   node.children.forEach(child => {
     //recursively go down tree
+    console.log('child', child)
     const fizzNode = kAryFizzbuzz(child);
-    child.children.push(fizzNode);
+    newNode.children.push(fizzNode);
   })
-
-
+  
+  
   return newNode
 
 }
