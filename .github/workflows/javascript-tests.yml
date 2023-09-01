@@ -29,6 +29,6 @@ jobs:
       run: |
         cd javascript
         npm i
-        npm test trees
+        npm test k-ary-tree
       env:
         CI: true
