@@ -57,8 +57,11 @@ class Graph {
         }
       });
     } else {
-      return null;
+      return [];
     }
+  }
+  size(){
+    return this.adjacencyList.size;
   }
 }
 
