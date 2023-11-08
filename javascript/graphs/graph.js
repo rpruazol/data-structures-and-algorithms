@@ -53,6 +53,7 @@ class Graph {
   }
   getNeighbors(vertex) {
     const edges = this.adjacencyList.get(vertex);
+    console.log('edges', edges)
     if (edges) {
       const res = edges.map(edge => edge.toNode)
       return res
@@ -72,15 +73,36 @@ class Graph {
     queue.enqueue(vertex);
     while(queue.front && queue.back){
       const node = queue.dequeue(vertex).value;
-      console.log('node to check>>>>', node)
-      console.log('should be empty', queue)
+      // console.log('node to check>>>>', node)
+      // console.log('should be empty', queue)
       const neighbors = this.getNeighbors(node);
-      console.log('neighbors>>>>', neighbors)
+      // console.log('neighbors>>>>', neighbors)
       neighbors.forEach(node => {
         if(!map.has(node)){
           map.set(node, true);
           queue.enqueue(node);
           output.push(node.value);
+        }
+      })
+    }
+    return output;
+  }
+  depthFirstTraversal(vertex){
+    const stack = new Stack();
+    const map = new Map();
+    const output = [];
+    output.push(vertex.value)
+    stack.push(vertex);
+    while(stack.top){
+      const node = stack.pop().value;
+      const neighbors = this.getNeighbors(node);
+      console.log(neighbors)
+      neighbors.forEach(node => {
+        if(!map.has(node)){
+          map.set(node, true);
+          stack.push(node);
+          output.push(node.value);
+          console.log(output)
         }
       })
     }
